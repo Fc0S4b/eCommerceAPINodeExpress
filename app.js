@@ -7,7 +7,7 @@ const app = express();
 
 // rest of the packages
 const morgan = require('morgan');
-
+const cookieParser = require('cookie-parser');
 // database
 const connectDB = require('./db/connect');
 
@@ -20,8 +20,13 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(morgan('tiny')); //se ve info de las req mas reducida y abreviada en consola
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
+  res.send('e-commerce api');
+});
+app.get('/api/v1', (req, res) => {
+  console.log(req.cookies);
   res.send('e-commerce api');
 });
 
