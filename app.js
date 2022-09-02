@@ -9,6 +9,12 @@ const app = express();
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const rateLimiter = require('express-rate-limit');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const cors = require('cors');
+const mongoSanitize = require('express-mongo-sanitize');
+
 // database
 const connectDB = require('./db/connect');
 
@@ -22,6 +28,21 @@ const orderRouter = require('./routes/orderRoutes');
 // middleware
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
+const { mongo } = require('mongoose');
+
+app.set('trust proxy', 1);
+// limitar las req de cada ip
+app.use(
+  rateLimiter({
+    windowsMs: 15 * 60 * 1000,
+    max: 60,
+  })
+);
+
+app.use(helmet()); //seguridad en response headers
+app.use(cors()); //para acceder desde diferentes dominios, recuerda que las cookies funcionará solo si el frontend tiene el mismo dominio
+app.use(xss()); //para sanitizar los inputs del usuario
+app.use(mongoSanitize()); //para inyecciones mongo
 
 app.use(morgan('tiny')); //se ve info de las req mas reducida y abreviada en consola
 app.use(express.json());
