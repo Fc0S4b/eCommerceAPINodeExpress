@@ -44,21 +44,21 @@ app.use(cors()); //para acceder desde diferentes dominios, recuerda que las cook
 app.use(xss()); //para sanitizar los inputs del usuario
 app.use(mongoSanitize()); //para inyecciones mongo
 
-app.use(morgan('tiny')); //se ve info de las req mas reducida y abreviada en consola
+// app.use(morgan('tiny')); //se ve info de las req mas reducida y abreviada en consola
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use(express.static('./public'));
 app.use(fileUpload());
 
-app.get('/', (req, res) => {
-  res.send('e-commerce api');
-});
-app.get('/api/v1', (req, res) => {
-  // console.log(req.cookies);
-  console.log(req.signedCookies);
-  res.send('e-commerce api');
-});
+// app.get('/', (req, res) => {
+//   res.send('e-commerce api');
+// });
+// app.get('/api/v1', (req, res) => {
+//   // console.log(req.cookies);
+//   console.log(req.signedCookies);
+//   res.send('e-commerce api');
+// });
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
