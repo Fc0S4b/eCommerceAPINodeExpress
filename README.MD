@@ -1,6 +1,21 @@
-## Hosted Project
+## Proyecto NodeExpress de API de tienda comercial (práctica del curso de John Smilga Node Express en [udemy](https://www.udemy.com/share/104VV03@GRX_7s6HIOSLg0gzvOyrx8tvapmR0USq8uZu9Lhfh_9XVULDkbhrd9KEFNETXohtGg==/))
 
-[E-Commerce API Heroku URL](https://e-commerce-api-10.herokuapp.com/)
+1. Conexión con base de datos en MongoDB, uso de mongoose package
+2. express-async-errors package
+3. Creación de esquemas de modelos para mongoDB
+4. Validator Package
+5. Testeo de rutas con Postman
+6. Manejo de contraseña y encriptación
+7. Uso de JWT para creación, verificación, env variables, manejo de Cookies
+8. Manejo de errores 400, 401, 404, errores del servidor, errores de mongoose
+9. Controladores con funciones CRUD
+10. Manejo de autenticación, permisos de administrador, actualización de contraseña
+11. Modelo de esquema de productos, upload imágenes
+12. Modelo de esquema de reseñas de productos en formato CRUD
+13. Populate database
+14. Creación de docs de API con Docgen
+15. Security Packages (express-rate-limiter, helmet, xss-clean, express-mongo-sanitize, cors)
+
 
 #### Setup Basic Express Server
 
